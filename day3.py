@@ -83,34 +83,6 @@ assert removeFirstLowestBattery("3533343533443433343344434533332") == "353334353
 
 
 
-def findBatteriesLevel2(bank):
-    assert type(bank) == str, "bank must be str"
-    assert bank != "", "bank must be non empty string"
-
-    n = len(bank)
-
-    first_battery, index_first_battery = findFirstGreatestBattery(bank[:n-11])
-
-    # now, we only need to find the 11 other batteries in bank[index_first_battery:]
-
-    number_of_bad_batteries_left_to_find = n - index_first_battery - 12
-    bank = bank[index_first_battery+1:]
-
-    for _ in range(number_of_bad_batteries_left_to_find):
-        bank = removeFirstLowestBattery(bank)
-        print(bank)
-    bank = first_battery + bank
-    print(bank)
-    return bank
-
-
-# testing the function
-"""assert findBatteriesLevel2("987654321111111") == "987654321111", "tests"
-assert findBatteriesLevel2("811111111111119") == "811111111119", "tests"
-assert findBatteriesLevel2("234234234234278") == "434234234278", "tests"
-assert findBatteriesLevel2("818181911112111") == "888911112111", "tests"""
-# assert findBatteriesLevel2("2222243214211225332122232722325213322322423225222332422243224322212131234322342411431242521333111132") == "755521333132", "tests"
-
 
 
 def getAllBanks():
@@ -142,29 +114,9 @@ assert findAllGreatestJoltages(["612345", "811111111111119"]) == [65, 89], "test
 
 
 
-def findAllGreatestJoltagesLevel2(batteries: list[str]):
-    assert type(batteries) == list, "batteries must be a list of batteries (str)"
-    for battery in batteries:
-        assert type(battery) == str, "batteries must be a list of batteries (str)"
 
-    joltages = []
-    for battery in batteries:
-        best_joltage = findBatteriesLevel2(battery)
-        joltages.append(int(best_joltage))
-    
-    return joltages
-
-
-# testing the function
-assert findAllGreatestJoltagesLevel2(["987654321111111", "811111111111119"]) == [987654321111, 811111111119], "tests"
-assert findAllGreatestJoltagesLevel2(["811111111111119", "234234234234278"]) == [811111111119, 434234234278], "tests"
-assert findAllGreatestJoltagesLevel2(["811111111111119", "234234234234278"]) == [811111111119, 434234234278], "tests"
-
-
-"""inp = getAllBanks()
+inp = getAllBanks()
 joltages_level1 = findAllGreatestJoltages(inp)
-joltages_level2 = findAllGreatestJoltagesLevel2(inp)
 result = sum(joltages_level1)
-result2 = sum(joltages_level2)
-print("resultat level 1 :", result)
-print("resultat level 2 :", result2)"""
+print("result level 1 :", result)
+

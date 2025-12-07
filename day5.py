@@ -186,27 +186,8 @@ assert isInList([1, 2, 3, 14, 17, 18, 19, 20, 21, 33, 37], 32) == False, "tests"
 assert isInList([1, 2, 3, 14, 17, 18, 19, 20, 21, 33, 34, 37], 32) == False, "tests"
 
 
-def countFreshIds(list_range_tuple:  list[tuple[int]]):
-
-    list_range_tuple.sort(key=lambda a: a[0])
-    counter = 0
-    list_fresh = []
-    
-    for range_tuple in list_range_tuple:
-        start, finish = range_tuple
-
-
-
-    return counter
-
-assert countFreshIds([(2, 4), (11, 12), (2, 3), (1, 2)]) == 6, "tests"
-assert countFreshIds([(2, 11), (11, 12), (2, 3), (1, 2)]) == 12, "tests"
-assert countFreshIds([(2, 4), (11, 12), (2, 3), (1, 2), (44, 44)]) == 7, "tests"
-assert countFreshIds([(2, 4), (11, 12), (2, 3), (1, 2), (11, 13)]) == 7, "tests"
-
 
 
 list_range_id = convertToListOfTuples(inp_fresh)
 print(countIdsInRange(inp_stock, list_range_id))
-print(countFreshIds(list_range_id))
 
