@@ -8,6 +8,7 @@ class Dial:
     def __init__(self):
         self.dial = 50
         self.nb_0 = 0
+        self.nb_0_level2 =  0
 
         with open("input1.txt", "r") as f:
             self.inp = f.read().splitlines()
@@ -24,7 +25,7 @@ class Dial:
             
             self.dial %= 100
                 
-            self.nb_0 += self.dial == 0
+            self.nb_0_level2 += self.dial == 0
 
 
     
@@ -35,12 +36,18 @@ class Dial:
             self.turnNb(int(rotation[1:]))
         else:
             self.turnNb(-int(rotation[1:]))
+        
+        self.nb_0 += self.dial == 0
 
 
     def getDial(self):
         """returns the current state of the dial"""
         return self.dial
     
+
+    def getNb_0_level2(self):
+        return self.nb_0_level2
+
 
     def getNb_0(self):
         return self.nb_0
@@ -51,7 +58,7 @@ class Dial:
 
 
 def do_all_rotations(dial: Dial):
-    """rotates for each rotation in L and returns the number of times it reached 0"""
+    """rotates for each rotation in L"""
     
     for rotation in dial.getInp():
         dial.rotate(rotation)
@@ -62,5 +69,6 @@ dial = Dial()
 
 # print(inp)
 res = do_all_rotations(dial)
-print("result is :", dial.getNb_0())
+print("Level 1 :", dial.getNb_0())
+print("Level 2 :", dial.getNb_0_level2())
 
