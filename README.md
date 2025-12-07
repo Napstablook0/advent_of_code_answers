@@ -1,4 +1,4 @@
-# my [adventofcode2025](https://adventofcode.com/) answers
+# my [adventofcode2025](https://adventofcode.com/2025) answers
 
 ## Dependencies
 - Python >= 3.13  but should work on any version
