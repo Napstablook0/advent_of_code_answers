@@ -145,11 +145,8 @@ def sumProblemsLevel2(inp, mat):
 
 
 
-"""result = sumProblems(inp)
-print(result)"""
-
+result = sumProblems(inp)
 result2 = sumProblemsLevel2(inp_raw, inp)
-print(result2)
+print("level1 :", result)
+print("level2 :", result2)
 
-
-# 7090113 trop bas
