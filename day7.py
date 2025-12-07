@@ -42,7 +42,7 @@ def moveDownward(mat, x, y):
 
 
 def _moveDownwardLevel2(mat:  list[str], x: int, y: int, deja_faits: dict):
-    """returns the number of times the beam splited"""
+    """returns the number of paths the beam can take"""
     n  = len(mat)
     m =  len(mat[0])
     assert x >= 0 and x < m, "x has to be a correct coordinate"
