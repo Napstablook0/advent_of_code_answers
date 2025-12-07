@@ -19,5 +19,5 @@ The answers will be printed in terminal
 
 ---
 
-### Additionnal Informations
+### Additionnal Information
 For some reasons i've lost the part of the code for days 3 and 5 meaning the scripts day3.py and day5.py will only calculate the answer for the first level, not the second
