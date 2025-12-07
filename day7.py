@@ -8,7 +8,7 @@ with open("input7.txt", "r") as f:
 
 
 
-def _moveDownward(mat:  list[str], x: int, y: int, deja_faits: dict):
+def _moveDownward(mat:  list[str], x: int, y: int, already_done: dict):
     """returns the number of times the beam splited"""
     n  = len(mat)
     m =  len(mat[0])
@@ -16,19 +16,19 @@ def _moveDownward(mat:  list[str], x: int, y: int, deja_faits: dict):
     assert y >= 0 and y < n, "y has to be a correct coordinate"
 
 
-    if (x, y) in deja_faits.keys():
+    if (x, y) in already_done.keys():
         return 0
 
     if (mat[y][x] == "." or mat[y][x] == "S") and y+1 >= 0 and y+1 < n:
-        next = _moveDownward(mat, x, y+1, deja_faits)
-        deja_faits[(x, y+1)] = next
+        next = _moveDownward(mat, x, y+1, already_done)
+        already_done[(x, y+1)] = next
         
         return next
     elif mat[y][x] == "^":
-        next1 = _moveDownward(mat, x-1, y, deja_faits)
-        next2 = _moveDownward(mat, x+1, y, deja_faits)
-        deja_faits[(x-1, y)] = next1
-        deja_faits[(x+1, y)] = next2
+        next1 = _moveDownward(mat, x-1, y, already_done)
+        next2 = _moveDownward(mat, x+1, y, already_done)
+        already_done[(x-1, y)] = next1
+        already_done[(x+1, y)] = next2
 
         return 1 + next1 + next2
     else:
@@ -37,11 +37,11 @@ def _moveDownward(mat:  list[str], x: int, y: int, deja_faits: dict):
 
 
 def moveDownward(mat, x, y):
-    deja_faits = {}
-    return _moveDownward(mat, x, y, deja_faits)
+    already_done = {}
+    return _moveDownward(mat, x, y, already_done)
 
 
-def _moveDownwardLevel2(mat:  list[str], x: int, y: int, deja_faits: dict):
+def _moveDownwardLevel2(mat:  list[str], x: int, y: int, already_done: dict):
     """returns the number of paths the beam can take"""
     n  = len(mat)
     m =  len(mat[0])
@@ -49,19 +49,19 @@ def _moveDownwardLevel2(mat:  list[str], x: int, y: int, deja_faits: dict):
     assert y >= 0 and y < n, "y has to be a correct coordinate"
 
 
-    if (x, y) in deja_faits.keys():
-        return deja_faits[(x, y)]
+    if (x, y) in already_done.keys():
+        return already_done[(x, y)]
 
     if (mat[y][x] == "." or mat[y][x] == "S") and y+1 >= 0 and y+1 < n:
-        next = _moveDownwardLevel2(mat, x, y+1, deja_faits)
-        deja_faits[(x, y+1)] = next
+        next = _moveDownwardLevel2(mat, x, y+1, already_done)
+        already_done[(x, y+1)] = next
         
         return next
     elif mat[y][x] == "^":
-        next1 = _moveDownwardLevel2(mat, x-1, y, deja_faits)
-        next2 = _moveDownwardLevel2(mat, x+1, y, deja_faits)
-        deja_faits[(x-1, y)] = next1
-        deja_faits[(x+1, y)] = next2
+        next1 = _moveDownwardLevel2(mat, x-1, y, already_done)
+        next2 = _moveDownwardLevel2(mat, x+1, y, already_done)
+        already_done[(x-1, y)] = next1
+        already_done[(x+1, y)] = next2
 
         return next1 + next2
     else:
@@ -70,8 +70,8 @@ def _moveDownwardLevel2(mat:  list[str], x: int, y: int, deja_faits: dict):
 
 
 def moveDownwardLevel2(mat, x, y):
-    deja_faits = {}
-    return _moveDownwardLevel2(mat, x, y, deja_faits)
+    already_done = {}
+    return _moveDownwardLevel2(mat, x, y, already_done)
 
 
 
