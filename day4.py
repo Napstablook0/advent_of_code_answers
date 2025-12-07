@@ -120,5 +120,6 @@ while continue_loop:
     next_result, continue_loop = countAndRemoveAccessibleRolls(inp)
     result2 += next_result
 
-print(result1)
-print(result2)
+
+print("result level1 :", result1)
+print("result level2 :", result2)

@@ -189,5 +189,5 @@ assert isInList([1, 2, 3, 14, 17, 18, 19, 20, 21, 33, 34, 37], 32) == False, "te
 
 
 list_range_id = convertToListOfTuples(inp_fresh)
-print(countIdsInRange(inp_stock, list_range_id))
+print("result level1 :", countIdsInRange(inp_stock, list_range_id))
 
