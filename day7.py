@@ -9,7 +9,7 @@ with open("input7.txt", "r") as f:
 
 
 def _moveDownward(mat:  list[str], x: int, y: int, already_done: dict):
-    """returns the number of times the beam splited"""
+    """returns the number of times the beam splited, starting the beam from coordinates (x, y)"""
     n  = len(mat)
     m =  len(mat[0])
     assert x >= 0 and x < m, "x has to be a correct coordinate"
